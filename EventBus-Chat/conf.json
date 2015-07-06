@@ -1,0 +1,7 @@
+{
+	"host":"localhost",
+	"port":8080,
+  	"src-package":"treeptik.ldallen",
+  	"services":[["chatService","treeptik.ldallen.services.ChatService"]]
+
+}

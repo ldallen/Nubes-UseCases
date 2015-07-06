@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title> todolist example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/sockjs/0.3.4/sockjs.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://www.trirand.com/blog/jqgrid/js/jquery.jqGrid.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://www.trirand.com/blog/jqgrid/js/jquery-ui-custom.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://www.trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js"></script>
+    <script src="/todolist/vertxbus.js"></script>
+    <script src="/todolist/todolist.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.trirand.com/blog/jqgrid/themes/ui.jqgrid.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.trirand.com/blog/jqgrid/themes/redmond/jquery-ui-custom.css"/>
+</head>
+
+
+<body>
+
+
+<div> <h1>My Todo-List </h1></div><br/>
+
+<table id="todolist"></table>
+<div id="pager"></div>
+<br/>
+<br/>
+
+<table id="addField">
+    <tr>
+        <th>Task Name</th>
+        <th><input type="text" name="taskname"/></th>
+    </tr>
+
+    <tr>
+        <th>Task Description</th>
+        <th><input type="text" name="taskdescription"/></th>
+    </tr>
+
+    <tr>
+        <th><input type="button" value="Add/Modify task" onclick="addTaskHandler()"/></th>
+        <th><input type="button" value="Delete task" onclick="delTaskHandler()"/></th>
+
+    </tr>
+
+</table>
+
+<br/>
+<br/>
+
+</body>
+</html>
