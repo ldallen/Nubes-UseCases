@@ -19,7 +19,7 @@ If you just want to build the project, run :
 ```
 gradlew shadowJar
 ```
-This command will create a jar, which you can run using the following command :
+This will create a jar, which you can run using the following command :
 
 ```
 java -jar example.jar -conf conf.json
