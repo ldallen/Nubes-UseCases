@@ -1,63 +1,72 @@
 package treeptik.ldallen.services;
 
-import com.github.aesteve.vertx.nubes.services.Service;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
-import treeptik.ldallen.domains.Product;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProductService implements Service  {
+import treeptik.ldallen.domains.Product;
 
-    private Map<String, Product> products ;
-    private Vertx vertx;
+import com.github.aesteve.vertx.nubes.services.Service;
 
+public class ProductService implements Service {
 
-    @Override
-    public void init(Vertx vertx) {
-        this.vertx = vertx;
-    }
+	private Map<Integer, Product> products;
+	private Vertx vertx;
 
-    @Override
-    public void start(Future<Void> future) {
-        products = new HashMap<>();
-        future.complete();
-    }
+	@Override
+	public void init(Vertx vertx) {
+		this.vertx = vertx;
+	}
 
-    @Override
-    public void stop(Future<Void> future) {
-        products.clear();
-        future.complete();
-    }
+	@Override
+	public void start(Future<Void> future) {
+		products = new HashMap<>();
+		future.complete();
+	}
 
-    public void add( int id,Product product) {
-        products.put(Integer.toString(id), product);
-    }
+	@Override
+	public void stop(Future<Void> future) {
+		products.clear();
+		future.complete();
+	}
 
-    public void del(int id){
-        products.remove(Integer.toString(id));
-    }
+	// ~= UPDATE FROM ...
+	public void update(int id, Product product) {
+		products.put(id, product);
+	}
 
-    public Product getProduct(int id) {
-        return products.get(Integer.toString(id)); // select request to db
-    }
+	// ~= INSERT INTO (with a sequence)
+	public void add(Product product) {
+		// find the max index in map, like a relational DB using an auto-generated sequence
+		Integer max = products.keySet().stream().max(Integer::compare).orElse(0);
+		update(max + 1, product);
+	}
 
-    public Collection<Product> getProducts() {
-        return products.values();
-    }
+	public void del(int id) {
+		products.remove(id);
+	}
 
-    public boolean isEmpty() {
-        return products.isEmpty();
-    }
+	public Product getProduct(int id) {
+		return products.get(id); // select request to db
+	}
 
-    public int size() {
-        return products.size();
-    }
+	public Collection<Product> getProducts() {
+		return products.values();
+	}
 
-    public void clear() {
-        products.clear();
-    }
+	public boolean isEmpty() {
+		return products.isEmpty();
+	}
+
+	public int size() {
+		return products.size();
+	}
+
+	public void clear() {
+		products.clear();
+	}
 
 }

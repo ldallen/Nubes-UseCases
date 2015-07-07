@@ -20,12 +20,12 @@ public class ProductFixture extends Fixture {
 
 	@Override
 	public void startUp(Vertx vertx, Future<Void> future) {
-		Product product1 = new Product("Egg Whisk",3.99,150);
-		Product product2 = new Product("Tea Cosy",5.99,100);
-		Product product3 = new Product("Spatula",1.00,80);
-		products.add(1,product1);
-		products.add(2,product2);
-		products.add(3,product3);
+		Product product1 = new Product("Egg Whisk", 3.99, 150);
+		Product product2 = new Product("Tea Cosy", 5.99, 100);
+		Product product3 = new Product("Spatula", 1.00, 80);
+		products.add(product1);
+		products.add(product2);
+		products.add(product3);
 		future.complete();
 	}
 

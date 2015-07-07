@@ -2,12 +2,8 @@
 	"host":"localhost",
 	"port":8080,
   	"src-package":"treeptik.ldallen",
-  	"verticle-package":"treeptik.ldallen.verticles",
   	"domain-package":"treeptik.ldallen.domains",
   	"fixture-packages":["treeptik.ldallen.fixtures"],
   	"controller-packages":["treeptik.ldallen.controller"],
-  	"services":[["echoService","treeptik.ldallen.services.EchoService"],
-	  			["taskService","treeptik.ldallen.services.TaskService"]],
-  	"templates":["hbs","jade"] //not used, just testing that the template handlers are correctly loaded
-
+  	"services":[["taskService","treeptik.ldallen.services.TaskService"]]
 }
