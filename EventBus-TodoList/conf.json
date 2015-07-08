@@ -5,5 +5,5 @@
   	"domain-package":"treeptik.ldallen.domains",
   	"fixture-packages":["treeptik.ldallen.fixtures"],
   	"controller-packages":["treeptik.ldallen.controller"],
-  	"services":[["taskService","treeptik.ldallen.services.TaskService"]]
+  	"services":{"taskService":"treeptik.ldallen.services.TaskService"}
 }

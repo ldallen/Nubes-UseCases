@@ -96,7 +96,6 @@ public class TaskService implements Service {
 		JsonObject msg = message.body();
 		add(new Task(msg.getString("taskname"), msg.getString("taskdescription")));
 		sendTaskList();
-
 	}
 
 	@Consumer("task.del")
