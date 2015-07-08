@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: io.fastjson:boon:0.32">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/fastjson/boon/0.32/boon-0.32.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: org.parboiled:parboiled-core:1.0.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/parboiled/parboiled-core/1.0.2/parboiled-core-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
