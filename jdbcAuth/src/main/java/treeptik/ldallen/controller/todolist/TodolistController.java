@@ -35,10 +35,4 @@ public class TodolistController {
 		return "web/assets/loginpage.html";
 	}
 
-	@POST("/loginhandler")
-	@Auth(method = AuthMethod.FORM, authority = "")
-	@File
-	public String listView2() {
-		return "web/assets/todolist.html"; // I didn't know what to do here..
-	}
 }
