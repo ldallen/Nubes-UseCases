@@ -5,13 +5,7 @@ import io.vertx.core.*;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.auth.AuthProvider;
-import io.vertx.ext.auth.jdbc.JDBCAuth;
 import io.vertx.ext.auth.jwt.JWTAuth;
-import io.vertx.ext.jdbc.JDBCClient;
-import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.ext.web.handler.CookieHandler;
-import treeptik.ldallen.services.TaskService;
 
 import static com.github.aesteve.vertx.nubes.utils.async.AsyncUtils.*;
 
@@ -30,13 +24,10 @@ public class Server extends AbstractVerticle {
 		options = new HttpServerOptions();
 		options.setHost(config.getString("host", "localhost"));
 		options.setPort(config.getInteger("port", 9000));
-		JsonObject jdbcConfig = config.getJsonObject("jdbcConf");
 		JsonObject jwtConf = config.getJsonObject("jwtConf");
 		nubes = new VertxNubes(vertx, config);
-		JDBCClient client = JDBCClient.createShared(vertx, jdbcConfig,"todolist");
 		jwt = JWTAuth.create(vertx,jwtConf);
 		nubes.setAuthProvider(jwt);
-		nubes.registerService("taskService", new TaskService(jdbcConfig));
 
 	}
 

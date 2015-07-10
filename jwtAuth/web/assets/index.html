@@ -12,7 +12,7 @@
 	<br>
 
 	<div id="test">
-		<a href="#" id="getProtected">Go to todolist page</a>
+		<a href="#" id="getProtected">Go to private page</a>
 		<div id="protected"></div>
 	</div>
 
@@ -20,7 +20,7 @@
 		$(document).ready(function () {
 			$('#generateToken').on('click', function () {
 				$.ajax({
-					url: '/todolist/token',
+					url: '/token',
 					dataType: 'text',
 					success: function (text) {
 						$('#token').html('Current Token: ' + text);
@@ -30,7 +30,7 @@
 
 			$('#getProtected').on('click', function () {
 				$.ajax({
-					url: '/todolist/list',
+					url: '/private',
 					method: 'GET',
 					headers: {
 						"Authorization": "Bearer " + $('#token').html().substring(15),
