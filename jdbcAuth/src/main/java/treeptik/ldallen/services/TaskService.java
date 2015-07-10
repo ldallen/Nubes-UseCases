@@ -19,7 +19,6 @@ import com.github.aesteve.vertx.nubes.services.Service;
 
 public class TaskService implements Service {
 
-//	private List<Task> tasks; // replaced by real database
 	private Vertx vertx;
 	private JDBCClient dbClient;
 	private JsonObject config;
@@ -157,27 +156,6 @@ public class TaskService implements Service {
 		});
 	}
 
-	// Bloc commented because methods not used by the app yet
-
-//	public Task getTask(int i) {
-//		return tasks.get(i); // select request to db
-//	}
-//
-//	public List<Task> getTasks() {
-//		return tasks; // select request to db
-//	}
-//
-//	public boolean isEmpty() {
-//		return tasks.isEmpty();
-//	}
-//
-//	public int size() {
-//		return tasks.size();
-//	}
-//
-//	public void clear() {
-//		tasks.clear();
-//	}
 
 	public void sendTaskList() {
 

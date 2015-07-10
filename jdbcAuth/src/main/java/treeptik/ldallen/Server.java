@@ -8,8 +8,6 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.AuthProvider;
 import io.vertx.ext.auth.jdbc.JDBCAuth;
 import io.vertx.ext.jdbc.JDBCClient;
-import io.vertx.ext.web.handler.BodyHandler;
-import io.vertx.ext.web.handler.CookieHandler;
 import treeptik.ldallen.services.TaskService;
 
 import static com.github.aesteve.vertx.nubes.utils.async.AsyncUtils.*;
