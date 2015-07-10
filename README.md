@@ -3,7 +3,8 @@ Some simple use cases of the [Vertx-Nubes framework](https://github.com/aesteve/
 
 ## Requirements
 
-Before trying to run the examples, be sure that you have a recent version of Vertx-Nubes with NubesServer implemented.
+Before trying to run the examples, be sure that you have a recent version of Vertx-Nubes with NubesServer implemented.  
+For the authentication examples, you will also need [this version](https://github.com/ldallen/vertx-nubes/tree/authentications) of Nubes.
 
 ##How to run the examples
 
