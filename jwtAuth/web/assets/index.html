@@ -1,0 +1,50 @@
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<h1> JWT Authentication example with Nubes</h1>
+<body>
+
+	<div id="login">
+		<a href="#" id="generateToken">Get a Token</a>
+		<div id="token">Current Token: </div>
+	</div>
+
+	<br>
+	<br>
+
+	<div id="test">
+		<a href="#" id="getProtected">Go to todolist page</a>
+		<div id="protected"></div>
+	</div>
+
+	<script language="JavaScript">
+		$(document).ready(function () {
+			$('#generateToken').on('click', function () {
+				$.ajax({
+					url: '/todolist/token',
+					dataType: 'text',
+					success: function (text) {
+						$('#token').html('Current Token: ' + text);
+					}
+				});
+			});
+
+			$('#getProtected').on('click', function () {
+				$.ajax({
+					url: '/todolist/list',
+					method: 'GET',
+					headers: {
+						"Authorization": "Bearer " + $('#token').html().substring(15),
+						"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+					},
+					success: function (html){
+						var newDoc = document.open("text/html", "replace");
+						newDoc.write(html);
+						newDoc.close();
+					}
+				});
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+	"host":"localhost",
+	"port":8080,
+  	"src-package":"treeptik.ldallen",
+  	"domain-package":"treeptik.ldallen.domains",
+  	"fixture-packages":["treeptik.ldallen.fixtures"],
+  	"controller-packages":["treeptik.ldallen.controller"],
+  	"jdbcConf":{"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
+  				"driver_class":"org.hsqldb.jdbcDriver"
+				},
+  	"jwtConf":{"keyStore":{
+	  						"type":"jceks",
+  							"path":"web/assets/keystore.jceks",
+	  						"password":"secret"
+							}
+				}
+}
