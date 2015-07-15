@@ -15,11 +15,10 @@ public class TodolistController {
 		return "web/assets/index.html";
 	}
 
-
 	@GET("/list")
 	@Auth(method = AuthMethod.REDIRECT, authority = "role:standard", redirectURL = "/todolist/loginpage")
 	@File
-	public String listView() {
+	public String redirectMethod(){
 		return "web/assets/todolist.html";
 	}
 
