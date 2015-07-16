@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	// Vertx
+	compile 'io.vertx:vertx-core:3.0.0'
+	compile 'io.vertx:vertx-web:3.0.0'
+
+	compile 'io.vertx:vertx-auth-common:3.0.0'
+	compile 'io.vertx:vertx-auth-jdbc:3.0.0'
+	compile 'io.vertx:vertx-jdbc-client:3.0.0'
+
+	compile 'org.hsqldb:hsqldb:2.3.2'
+
+	// Nubes (vertx annotation framework)
+	compile 'com.github.aesteve:vertx-nubes:0.1-SNAPSHOT'
+
+}
+
+shadowJar  {
+    classifier = ''
+    manifest {
+        attributes 'Main-Class': 'io.vertx.core.Starter'
+        attributes 'Main-Verticle': 'java:treeptik.ldallen.Server'
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+    dependencies {
+        exclude(dependency('io.vertx:codegen'))
+        exclude(dependency('junit:junit'))
+        exclude(dependency('org.mvel:mvel2'))
+    }
+    into 'web', {
+        from 'web'
+    }
+}
+
+
+task start(dependsOn: shadowJar) << {
+    javaexec { 
+    	main="-jar"
+    	args = [
+    		shadowJar.archivePath,
+    		"-conf",
+    		"conf.json"
+		]
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.4'
+}
