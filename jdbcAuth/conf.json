@@ -5,7 +5,11 @@
   	"domain-package":"treeptik.ldallen.domains",
   	"fixture-packages":["treeptik.ldallen.fixtures"],
   	"controller-packages":["treeptik.ldallen.controller"],
-  	"jdbcConf":{"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
-  				"driver_class":"org.hsqldb.jdbcDriver"
+  	"auth-type": "JDBC",
+  	"auth-properties": {"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
+	  "driver_class":"org.hsqldb.jdbcDriver"
+	},
+  	"services":{"treeptik.ldallen.services.TaskService":{"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
+	  "driver_class":"org.hsqldb.jdbcDriver"}
 				}
 }

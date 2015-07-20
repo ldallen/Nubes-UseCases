@@ -29,7 +29,7 @@ shadowJar  {
     classifier = ''
     manifest {
         attributes 'Main-Class': 'io.vertx.core.Starter'
-        attributes 'Main-Verticle': 'java:treeptik.ldallen.Server'
+        attributes 'Main-Verticle': 'java:com.github.aesteve.vertx.nubes.NubesServer'
     }
     mergeServiceFiles {
         include 'META-INF/services/io.vertx.core.spi.VerticleFactory'

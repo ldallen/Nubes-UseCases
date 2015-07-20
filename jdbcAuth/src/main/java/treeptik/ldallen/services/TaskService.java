@@ -30,7 +30,7 @@ public class TaskService implements Service {
 	@Override
 	public void init(Vertx vertx) {
 		this.vertx = vertx;
-		dbClient = JDBCClient.createShared(vertx,config,"todolist");
+		dbClient = JDBCClient.createShared(vertx,config);
 	}
 
 	@Override
