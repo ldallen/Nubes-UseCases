@@ -4,17 +4,21 @@ import com.github.aesteve.vertx.nubes.annotations.Controller;
 import com.github.aesteve.vertx.nubes.annotations.File;
 import com.github.aesteve.vertx.nubes.annotations.auth.Auth;
 import com.github.aesteve.vertx.nubes.annotations.routing.http.GET;
+import com.github.aesteve.vertx.nubes.annotations.services.Service;
 import com.github.aesteve.vertx.nubes.auth.AuthMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.auth.jwt.JWTOptions;
 import io.vertx.ext.web.RoutingContext;
-import treeptik.ldallen.Server;
+import treeptik.ldallen.services.JWTService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller("/")
 public class JWTController {
+
+	@Service("jWTService")
+	private JWTService jwt;
 
 	@GET
 	@File
@@ -27,7 +31,7 @@ public class JWTController {
 		context.response().putHeader("Content-Type", "text/plain");
 		List<String> authority = new ArrayList<String>();
 		authority.add("secret");
-		String token = Server.jwt.generateToken(new JsonObject(), new JWTOptions().setExpiresInSeconds(60).setPermissions(authority));
+		String token = jwt.auth.generateToken(new JsonObject(), new JWTOptions().setExpiresInSeconds(5).setPermissions(authority));
 		context.response().end(token);
 	}
 

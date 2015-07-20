@@ -1,13 +1,23 @@
 {
-	"host":"localhost",
-	"port":8080,
-  	"src-package":"treeptik.ldallen",
-  	"controller-packages":["treeptik.ldallen.controller"],
-
-  	"jwtConf":{"keyStore":{										//JWT for Authentication
-	  						"type":"jceks",
-  							"path":"web/assets/keystore.jceks",
-	  						"password":"secret"
-							}
-				}
+  "host": "localhost",
+  "port": 8080,
+  "src-package": "treeptik.ldallen",
+  "controller-packages": [
+	"treeptik.ldallen.controller"
+  ],
+  "auth-type": "JWT",
+  "auth-properties": {
+	"keyStore": {
+	  "type": "jceks",
+	  "path": "web/assets/keystore.jceks",
+	  "password": "secret"
+	}
+  },
+  "services":{"treeptik.ldallen.services.JWTService":{	"keyStore": {
+																"type": "jceks",
+																"path": "web/assets/keystore.jceks",
+																"password": "secret"
+ 																	 }
+  														}
+  			}
 }
