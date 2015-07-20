@@ -3,6 +3,6 @@
 	"port":8080,
   	"src-package":"treeptik.ldallen",
   	"controller-packages":["treeptik.ldallen.controller"],
-  	"services":{"productService":"treeptik.ldallen.services.ProductService"}
+  	"services":{"treeptik.ldallen.services.ProductService":null}
 
 }

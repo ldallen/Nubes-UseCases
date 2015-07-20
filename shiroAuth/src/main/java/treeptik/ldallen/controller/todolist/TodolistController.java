@@ -3,6 +3,7 @@ package treeptik.ldallen.controller.todolist;
 import com.github.aesteve.vertx.nubes.annotations.Controller;
 import com.github.aesteve.vertx.nubes.annotations.File;
 import com.github.aesteve.vertx.nubes.annotations.auth.Auth;
+import com.github.aesteve.vertx.nubes.annotations.auth.Logout;
 import com.github.aesteve.vertx.nubes.annotations.routing.http.GET;
 import com.github.aesteve.vertx.nubes.auth.AuthMethod;
 import io.vertx.ext.web.RoutingContext;
@@ -29,9 +30,9 @@ public class TodolistController {
 		return "web/assets/loginpage.html";
 	}
 
-	@GET("/list/logout")
+	@GET("/logout")
+	@Logout(logoutURL = "/todolist")
 	public void logoutMethod(RoutingContext context){
-		context.clearUser();
-		context.response().putHeader("location", "/todolist").setStatusCode(302).end();
+		context.response().end("logout successful");
 	}
 }

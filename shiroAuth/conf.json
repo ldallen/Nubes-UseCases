@@ -5,7 +5,12 @@
   	"domain-package":"treeptik.ldallen.domains",
   	"fixture-packages":["treeptik.ldallen.fixtures"],
   	"controller-packages":["treeptik.ldallen.controller"],
-  	"jdbcConf":{"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
-  				"driver_class":"org.hsqldb.jdbcDriver"
-				}
+  	"auth-type": "Shiro",
+  	"auth-properties":{"properties_path":"web/assets/vertx-users.properties"},
+  	"services":{
+	  			"treeptik.ldallen.services.TaskService":{
+	  														"url":"jdbc:hsqldb:mem:todolist?shutdown=true",
+	  														"driver_class":"org.hsqldb.jdbcDriver"
+														}
+ 	 			}
 }
