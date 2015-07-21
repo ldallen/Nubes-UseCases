@@ -1,0 +1,80 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'com.github.johnrengelman.shadow' version '1.2.1'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	// Vertx
+	compile 'io.vertx:vertx-core:3.0.0'
+	compile 'io.vertx:vertx-web:3.0.0'
+	// Nubes (vertx annotation framework)
+	compile 'com.github.aesteve:vertx-nubes:0.1-SNAPSHOT'
+
+
+    compile 'io.vertx:vertx-service-proxy:3.0.0'
+    compile 'io.vertx:vertx-codegen:3.0.0'
+}
+
+shadowJar  {
+    classifier = ''
+    manifest {
+        attributes 'Main-Class': 'io.vertx.core.Starter'
+        attributes 'Main-Verticle': 'java:com.github.aesteve.vertx.nubes.NubesServer'
+    }
+    mergeServiceFiles {
+        include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+    }
+    dependencies {
+        exclude(dependency('io.vertx:codegen'))
+        exclude(dependency('junit:junit'))
+        exclude(dependency('org.mvel:mvel2'))
+    }
+    into 'web', {
+        from 'web'
+    }
+}
+
+/* Service Proxy related */
+def generatedSrcPath="$buildDir/generated-src"
+def generatedSrcDir = file(generatedSrcPath)
+
+sourceSets {
+    main {
+        java.srcDirs += generatedSrcDir
+        output.dir(builtBy: 'generateServiceProxy', generatedSrcPath)
+    }
+}
+
+task start(dependsOn: shadowJar) << {
+    javaexec { 
+    	main="-jar"
+    	args = [
+    		shadowJar.archivePath,
+    		"-conf",
+    		"conf.json"
+		]
+	}
+}
+
+task generateServiceProxy(type: JavaCompile, description: 'Generates EBServiceProxies') {
+    source = [sourceSets.main.java]
+    classpath = configurations.testCompile
+    destinationDir = generatedSrcDir
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "io.vertx.codegen.CodeGenProcessor",
+            "-AoutputDirectory=$generatedSrcPath"
+    ]
+}
+
+start.dependsOn generateServiceProxy
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.4'
+}

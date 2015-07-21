@@ -1,0 +1,10 @@
+{
+	"host":"localhost",
+	"port":8080,
+  	"src-package":"treeptik.ldallen",
+  	"domain-package":"treeptik.ldallen.domains",
+  	"fixture-packages":["treeptik.ldallen.fixtures"],
+  	"controller-packages":["treeptik.ldallen.controller"],
+  	"services-proxy":{"treeptik.ldallen.services.impl.TaskServiceImpl":null},
+  	"services":{"treeptik.ldallen.services.InterceptorService":null}
+}
